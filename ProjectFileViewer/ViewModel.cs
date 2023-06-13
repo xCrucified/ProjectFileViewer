@@ -11,6 +11,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace ProjectFileViewer
 {
+    
     public class ViewModel : INotifyPropertyChanged
     {
         private string folderPath;
@@ -30,7 +31,7 @@ namespace ProjectFileViewer
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void _openFileDialog()
+        public void OpenFileDialog()
         {
             CommonOpenFileDialog openFileDialog = new CommonOpenFileDialog();
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -38,11 +39,8 @@ namespace ProjectFileViewer
 
             if (openFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                //MessageBox.Show(openFileDialog.FileName);
                 FolderPath = openFileDialog.FileName;
-                //return FolderPath;
             }
-            //return "0";
         }
     }
 }
