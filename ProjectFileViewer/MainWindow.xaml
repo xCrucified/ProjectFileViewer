@@ -31,7 +31,7 @@
             </Border>
 
             <Border Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="1" BorderThickness="2" BorderBrush="Black" Margin="5,29">
-                <ListBox Margin="15">
+                <ListBox Margin="15" ItemsSource="{Binding FileList}">
 
                 </ListBox>
             </Border>

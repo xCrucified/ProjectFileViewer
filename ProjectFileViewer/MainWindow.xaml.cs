@@ -27,9 +27,6 @@ namespace ProjectFileViewer
             InitializeComponent();
             viewModel = new ViewModel();
             this.DataContext = viewModel;
-
-            SecondWindow secondWindow = new SecondWindow();
-            secondWindow.Show();
         }
 
         private void OpenBtnClick(object sender, RoutedEventArgs e)
