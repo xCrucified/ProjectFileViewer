@@ -3,9 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        d:DataContext="{d:DesignInstance Type=local:ViewModels}"
         xmlns:local="clr-namespace:ProjectFileViewer"
         mc:Ignorable="d"
-       Title="MainWindow" Height="650" Width="500">
+        Title="MainWindow" Height="650" Width="500"
+        WindowStartupLocation="CenterScreen">
 
     <Border BorderThickness="3" BorderBrush="Black">
         <Grid>
@@ -31,8 +33,7 @@
             </Border>
 
             <Border Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="1" BorderThickness="2" BorderBrush="Black" Margin="5,29">
-                <ListBox Margin="15" ItemsSource="{Binding FileList}">
-
+                <ListBox Margin="15" ItemsSource="{Binding FileList}" SelectedItem="{Binding SelectedItem}" MouseDoubleClick="ListBox_MouseDoubleClick" >
                 </ListBox>
             </Border>
         </Grid>

@@ -2,21 +2,47 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using static System.Net.WebRequestMethods;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace ProjectFileViewer
 {
-    public class ViewModel : INotifyPropertyChanged
+    public class ViewModels : INotifyPropertyChanged
     {
-        private string folderPath;
+        private string selectedItem;
 
+        public string SelectedItem
+        {
+            get { return selectedItem; }
+            set 
+            {
+                selectedItem = value;
+                OnPropertyChanged(nameof(selectedItem));
+            }
+        }
+            
+        private RelayCommand clickDouble;
+
+        public RelayCommand ClickDouble
+        {
+            get { return clickDouble;; }
+            set 
+            {
+                clickDouble = value; 
+            }
+        }
+
+        private string folderPath;
         public string FolderPath
         {
             get { return folderPath; }
@@ -40,15 +66,13 @@ namespace ProjectFileViewer
             }
         }
 
-
-
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void OpenFileDialog()
+        public void OpenFileDialog() 
         {
             CommonOpenFileDialog openFileDialog = new CommonOpenFileDialog();
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -68,5 +92,20 @@ namespace ProjectFileViewer
                 }
             }
         }
+
+        public void OpenFile() 
+        {
+            FileInfo fileInfo = new FileInfo(folderPath);
+            if(selectedItem != null)
+            {
+                SecondWindow secondWindow = new SecondWindow();
+                secondWindow.NameLabel.Content = fileInfo.Name;
+                secondWindow.SizeLabel.Content = fileInfo.Length;
+                secondWindow.CreateLabel.Content = fileInfo.CreationTime;
+                secondWindow.Show();
+            }
+        }
     }
+
+
 }

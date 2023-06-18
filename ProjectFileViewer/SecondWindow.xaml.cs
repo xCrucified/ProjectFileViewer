@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,14 @@ namespace ProjectFileViewer
     /// </summary>
     public partial class SecondWindow : Window
     {
+        ViewModels viewModel;
         public SecondWindow()
         {
             InitializeComponent();
+            viewModel = new ViewModels();
+            this.DataContext = viewModel;
+            
         }
     }
+
 }
