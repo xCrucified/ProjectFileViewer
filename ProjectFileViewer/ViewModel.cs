@@ -30,17 +30,6 @@ namespace ProjectFileViewer
                 OnPropertyChanged(nameof(selectedItem));
             }
         }
-            
-        private RelayCommand clickDouble;
-
-        public RelayCommand ClickDouble
-        {
-            get { return clickDouble;; }
-            set 
-            {
-                clickDouble = value; 
-            }
-        }
 
         private string folderPath;
         public string FolderPath
@@ -92,18 +81,25 @@ namespace ProjectFileViewer
                 }
             }
         }
+        
+        public void SecondOpenFile()
+        {
+            OpenFileDialog();
+            
+        }
 
         public void OpenFile() 
         {
-            FileInfo fileInfo = new FileInfo(folderPath);
-            if(selectedItem != null)
+            SecondWindow secondWindow = new SecondWindow();
+            string[] files = Directory.GetFiles(FolderPath);
+            foreach (string file in files)
             {
-                SecondWindow secondWindow = new SecondWindow();
-                secondWindow.NameLabel.Content = fileInfo.Name;
-                secondWindow.SizeLabel.Content = fileInfo.Length;
-                secondWindow.CreateLabel.Content = fileInfo.CreationTime;
-                secondWindow.Show();
+                FileInfo fileInfo = new FileInfo(file);
+                secondWindow.NameLabel.Content = $"{fileInfo.Name}";
+                secondWindow.SizeLabel.Content =  $"{fileInfo.Length.ToString()} byte";
+                secondWindow.CreateLabel.Content = $"{fileInfo.CreationTime}";
             }
+            secondWindow.Show();
         }
     }
 

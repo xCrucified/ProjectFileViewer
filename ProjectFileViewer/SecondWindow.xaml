@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectFileViewer"
         mc:Ignorable="d"
-         Title="SecondWindow" Height="350" Width="300">
+         Title="SecondWindow" Height="350" Width="330">
     <Border BorderBrush="Black" BorderThickness="3">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -32,18 +32,18 @@
 
             <Label Grid.Row="4" VerticalAlignment="Top" Margin="12" Grid.RowSpan="2" >Create:</Label>
            
-            <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" x:Name="NameLabel" />
-            <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" x:Name="SizeLabel" />
-            <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" x:Name="CreateLabel"/>
+            <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="10" x:Name="NameLabel" />
+            <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="10" x:Name="SizeLabel" />
+            <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="10" x:Name="CreateLabel"/>
 
             <Border Grid.Row="7" Margin="5" BorderThickness="1" BorderBrush="Black">
-                <Button Content="Prev"/>
+                <Button Content="Prev" Click="PreviousBtnClick"/>
             </Border>
             <Border Grid.Row="7" Grid.Column="1" Margin="5" BorderThickness="1" BorderBrush="Black">
-                <Button Content="Open"/>
+                <Button Content="Open" Click="OpenFileBtnClick"/>
             </Border>
             <Border Grid.Column="2" Grid.Row="7" Margin="5" BorderThickness="1" BorderBrush="Black">
-                <Button Content="Next"/>
+                <Button Content="Next" Click="NextBtnClick"/>
             </Border>
         </Grid>
     </Border>

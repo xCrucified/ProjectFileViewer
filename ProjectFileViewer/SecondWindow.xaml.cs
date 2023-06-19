@@ -28,6 +28,21 @@ namespace ProjectFileViewer
             this.DataContext = viewModel;
             
         }
+
+        private void PreviousBtnClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Button pressed");
+        }
+
+        private void OpenFileBtnClick(object sender, RoutedEventArgs e)
+        {
+            viewModel.OpenFileDialog();
+        }
+
+        private void NextBtnClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Button pressed");
+        }
     }
 
 }
